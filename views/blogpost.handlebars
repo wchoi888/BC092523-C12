@@ -1,0 +1,31 @@
+<section class="container">
+
+  
+  <section class="flex-row justify-center">
+    {{!-- {{#each blogposts as |blogpost|}} --}}
+    <form class="form post-form">
+    <div>
+       <input type="hidden" id="blogpost_id" value="{{blogposts.id}}">
+      <h2>
+        {{blogposts.title}}
+        {{#if logged_in }} 
+        <button class ="btn delete-btn">Delete</button>  <a href="/editblogpost/{{blogposts.id}}" class="btn">Update</a>
+        {{/if}}
+      </h2>
+      <h4>date: {{format_date blogposts.createdAt}}</h4>
+      <p>
+        {{blogposts.content}}
+      </p>
+    </div>
+    {{!-- {{/each}} --}}
+    {{#if blogposts.comments}}
+       {{> viewcomments comments=blogposts.comments}}
+    {{/if}}
+    </form>
+  </section>
+</section>
+ {{> addcomments }}
+{{#if blogposts.id}}
+<script src="/js/blogpost.js"></script>
+{{/if}} 
+

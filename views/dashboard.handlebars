@@ -1,20 +1,21 @@
 <section class="container">
-  
-  {{#if loggedIn}}
-  <section class="flex-row justify-center">
-    {{#each blogposts as |blogpost|}}
-    <div>
-    <h2>
-      {{blogpost.title}}
-    </h2>
-    <h4>date: {{format_date blogpost.createdAt}}</h4>
-    <p>
-      {{blogpost.content}}
-    </p>
-  </div>
-    {{/each}}
-  </section>
+
+  {{#if logged_in}}
+    <section class="flex-row justify-center">
+      {{#each blogposts as |blogpost|}}
+        <div>
+          <h3><a href="/blogpost/{{blogpost.id}}">
+              {{blogpost.title}}
+              By
+              {{blogpost.user.username}}
+              Date:
+              {{format_date blogpost.createdAt}}</a>
+          </h3>
+        </div>
+      {{/each}}
+    </section>
+    <a href="/addblogpost"> add blogpost</a>
+  {{else}}
+    <a href="/login">You must login first to view this page</a>
+  {{/if}}
 </section>
-{{else}}
-<a href="/login">You must login first to view this page</a>
-{{/if}}

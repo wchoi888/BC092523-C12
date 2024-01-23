@@ -1,12 +1,17 @@
 {{#each blogposts as |blogpost|}}
-  <div>
-    <h2>
-      {{blogpost.title}}
-    </h2>
-    <h4> By {{blogpost.user.username}}</h4>
-    <h5>Date: {{format_date blogpost.createdAt}}</h5>
-    <p>
-      {{blogpost.content}}
-    </p>
+  <div class="post-container">
+    <h3><a href="#" onclick="viewpost({{blogpost.id}})">
+        {{blogpost.title}}
+
+        By
+        {{blogpost.user.username}}
+        Date:
+        {{format_date blogpost.createdAt}}</a>
+    </h3>
+    <div
+      class="post-content"
+      id="post{{blogpost.id}}"
+    >{{blogpost.content}}</div>
   </div>
+  <script src="./js/toggle.js"></script>
 {{/each}}

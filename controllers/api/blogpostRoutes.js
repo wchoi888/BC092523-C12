@@ -16,7 +16,12 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const blogpostData = await Blogpost.findByPk(req.params.id, {
-      include: [{ model: User }],
+      include: [
+        {
+          model: Comments,
+          include: [{ model: User, as: "User", attributes: ["username"] }],
+        },
+      ],
     });
 
     res.status(200).json(blogpostData);
@@ -29,11 +34,12 @@ router.post("/", async (req, res) => {
   try {
     const blogpostData = await Blogpost.create({
       ...req.body,
-      user_id: req.session.user_id,
+      userId: req.session.user_id,
     });
 
     res.status(200).json(blogpostData);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });
@@ -43,7 +49,7 @@ router.put("/:id", async (req, res) => {
     const blogpostData = await Blogpost.update(req.body, {
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.user_id,
       },
     });
 
@@ -63,7 +69,7 @@ router.delete("/:id", async (req, res) => {
     const blogpostData = await Blogpost.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        userId: req.session.user_id,
       },
     });
 
