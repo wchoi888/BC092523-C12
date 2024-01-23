@@ -36,9 +36,7 @@ header {
 }
 
 main {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 1;
+  display: block;
   padding: 15px 10px;
 }
 
@@ -81,9 +79,8 @@ nav a:hover {
 }
 
 .login-card {
-  margin: 0 0 20px 0;
-  flex: 0 0 50%;
-  max-width: 50%;
+  margin: 10px auto;
+  width: 50%;
   padding: 5px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);

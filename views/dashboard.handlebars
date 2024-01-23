@@ -1,7 +1,7 @@
 <section class="container">
 
   {{#if logged_in}}
-    <section class="flex-row justify-center">
+    <div class="col-12">
       {{#each blogposts as |blogpost|}}
         <div>
           <h3><a href="/blogpost/{{blogpost.id}}">
@@ -13,8 +13,8 @@
           </h3>
         </div>
       {{/each}}
-    </section>
-    <a href="/addblogpost"> add blogpost</a>
+    </div>
+    <h4><a href="/addblogpost" class="btn"> add blogpost</a></h4>
   {{else}}
     <a href="/login">You must login first to view this page</a>
   {{/if}}
