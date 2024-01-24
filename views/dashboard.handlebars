@@ -1,3 +1,4 @@
+<!-- HTML Template: Displaying a list of blogposts -->
 <section class="container">
 
   {{#if logged_in}}
@@ -14,8 +15,10 @@
         </div>
       {{/each}}
     </div>
+    <!-- Link to add a new blogpost -->
     <h4><a href="/addblogpost" class="btn"> add blogpost</a></h4>
   {{else}}
+    <!-- If user is not logged in, display login message -->
     <a href="/login">You must login first to view this page</a>
   {{/if}}
 </section>

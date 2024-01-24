@@ -1,3 +1,4 @@
+<!-- HTML Template: Form for adding or editing a blogpost -->
 <section class="container">
   {{#if logged_in}}
     <div class="login-card">
@@ -30,6 +31,7 @@
             id="blogpost"
           >{{blogposts.content}}</textarea>
         </div>
+        <!-- Conditional rendering of button based on whether editing or adding -->
         {{#if blogposts.id}}
           <div class="form-group">
             <button
@@ -49,8 +51,10 @@
         {{/if}}
       </form>
     </div>
+    <!-- Include blogpost.js script for form handling -->
     <script src="/js/blogpost.js"></script>
   {{else}}
+    <!-- If user is not logged in, display login message -->
     <a href="/login">You must login first to view this page</a>
   {{/if}}
 

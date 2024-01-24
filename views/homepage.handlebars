@@ -1,4 +1,6 @@
+<!-- Handlebars template for displaying a list of blogposts -->
 {{#each blogposts as |blogpost|}}
+  <!-- Loop through each blogpost in the list -->
   <div class="post-container">
     <h3><a href="#" onclick="viewpost({{blogpost.id}})">
         {{blogpost.title}}
@@ -9,9 +11,12 @@
         {{format_date blogpost.createdAt}}</a>
     </h3>
     <div
-      class="post-content"
+      {{! class="post-content" }}
+      style="display:none"
       id="post{{blogpost.id}}"
+    <!-- Hidden post content initially, displayed on click --></div>
     >{{blogpost.content}}</div>
   </div>
+  <!-- Include script to handle post content toggle -->
   <script src="./js/toggle.js"></script>
 {{/each}}

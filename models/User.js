@@ -1,13 +1,17 @@
+// Import Sequelize components for defining models and data types
 const { Model, DataTypes, INTEGER } = require("sequelize");
 // Import the Sequelize instance for connecting to the database
 const sequelize = require("../config/connection.js");
+// Import the bcrypt library for password hashing
 const bcrypt = require("bcrypt");
-
+// Define the User model by extending the Sequelize Model class
 class User extends Model {
+  // Method: Check if the provided password matches the hashed password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
+// Initialize the User model with defined attributes and options
 User.init(
   {
     id: {
@@ -33,5 +37,5 @@ User.init(
     modelName: "user",
   }
 );
-
+// Export the User model for use in other parts of the application
 module.exports = User;
