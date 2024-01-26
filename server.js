@@ -12,15 +12,17 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const hbs = exphbs.create({ helpers });
 
+app.set("trust proxy", 1); // Enable trust proxy to read X-Forwarded-Proto header
 const sess = {
-  secret: "Super secret secret",
+  secret: process.env.SESSION_SECRET || "SuperSecretSessionSecret", // Use a secure secret
   cookie: {
-    // Stored in milliseconds
-    maxAge: 24 * 60 * 60 * 1000, // expires after 1 day
+    maxAge: 86400000, // 24 hours in milliseconds
+    secure: process.env.NODE_ENV === "production", // Set to true in production if using HTTPS
+    httpOnly: false,
+    sameSite: "none",
   },
   resave: false,
   saveUninitialized: true,
-
   store: new SequelizeStore({
     db: sequelize,
   }),
