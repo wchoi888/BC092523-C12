@@ -44,4 +44,8 @@ Please contact me on this email wchoi@rocketmail.com
 
 ## Screenshot
 
+![screenshot](image-1.png)
+
 ## Deployment
+
+https://agile-everglades-79685-fca49a15251e.herokuapp.com/
