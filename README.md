@@ -44,8 +44,4 @@ Please contact me on this email wchoi@rocketmail.com
 
 ## Screenshot
 
-![Screenshot](image.png)
-
 ## Deployment
-
-https://evening-taiga-21894-77ba311388fe.herokuapp.com/
